@@ -7,6 +7,7 @@ RESET = '\033[0m'
 SPLITTER = '/'
 
 def main():
+    dt = None
     try:
         if len(sys.argv) == 2:
             dt = sys.argv[1]
@@ -37,8 +38,7 @@ def give_me_calendar(year: int = None, month: int = None):
     if not month:
         month = give_me_today().month
 
-    t = calendar.TextCalendar().formatmonth(year, month)
-    return t
+    return calendar.TextCalendar(firstweekday=6).formatmonth(year, month)
 
 def give_pretty_calendar(cal: str = None, today: int = None) -> str:
     if not cal:
